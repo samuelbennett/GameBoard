@@ -1,0 +1,16 @@
+{
+  "name": "game-board",
+  "version": false,
+  "globalDependencies": {
+    "assert": "registry:dt/assert#0.0.0+20160317120654",
+    "assertion-error": "github:DefinitelyTyped/DefinitelyTyped/assertion-error/assertion-error.d.ts#9f0f926a12026287b5a4a229e5672c01e7549313",
+    "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "mocha": "registry:dt/mocha#2.2.5+20160720003353",
+    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#b90aadb50d3b76f62f613760957c474d0ea70d94",
+    "source-map-support": "github:DefinitelyTyped/DefinitelyTyped/source-map-support/source-map-support.d.ts#b90aadb50d3b76f62f613760957c474d0ea70d94"
+  },
+  "dependencies": {
+    "es6-promise": "registry:npm/es6-promise#3.0.0+20160211003958",
+    "lodash": "registry:npm/lodash#4.0.0+20160701205107"
+  }
+}

@@ -1,0 +1,6 @@
+typings/
+node_modules/
+coverage/
+coverage-final/
+dist/
+.DS_Store

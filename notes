@@ -1,0 +1,39 @@
+when a SaintEnemy gets unfrozen it the medics job to make the stuff invincible again
+
+SaintEnemy setState
+	if state is frozen and to default
+		make sure everything that should be invincible is
+
+ ****
+
+
+freeze bomb
+	before place
+		nothing
+	after my place
+		freeze the fuckers
+	after place
+		nothing
+
+big bomb
+	before place
+		nothing (freeze bomb ignores)
+	after my place
+		nothing
+	after place
+		nothing
+
++bomb
+	before place
+		nothing
+	after my place
+		activate (destroy all the fucks)
+		sets off the big bomb
+			sets ready to blow to true?????????
+	after place 1
+		freeze bomb goes and set state default on all enemys
+			saint grabs that and invincibles all the stuff
+	after place 2
+		big bomb sees its ready to blow and goes and blows and kills
+
+

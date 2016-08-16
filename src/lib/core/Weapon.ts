@@ -37,10 +37,13 @@ export abstract class DirectionFlame extends Weapon {
 			while (c.valid(d)) {
 				c.move(d);
 				let o = g.getObject(c.loc);
-				if ( o instanceof Obstruction || o instanceof ObstructionEnemy) {
+				if ( o instanceof Obstruction) {
 					break;
 				}
 				locsToAttck.push(c.loc.clone());
+				if (o instanceof ObstructionEnemy && o.state !== 'DEAD') {
+					break;
+				}
 			}
 		});
 

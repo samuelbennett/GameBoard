@@ -40,7 +40,7 @@ export class StringLevelDeserialiser {
 					case '2':
 						o = new BasicEnemy(l, 2);
 						break;
-					case 'R':
+					case 'OB':
 						o =  new Obstruction(l);
 						break;
 					case 'OE':

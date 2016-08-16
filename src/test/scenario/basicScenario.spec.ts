@@ -9,6 +9,7 @@ import {Empty} from '../../lib/core/Object';
 import {BasicEnemy} from '../../lib/core/Enemy';
 import {UserAPI, LoadLevel, PlaceWeapon} from '../../lib/actions/UserActions';
 import {Promise} from 'es6-promise';
+import * as log from 'loglevel';
 
 describe('Basic Scenario Tests', () => {
 
@@ -121,6 +122,8 @@ describe('Basic Scenario Tests', () => {
 	});
 
 	it('Weapon 3 should throw an error', (done) => {
+		log.disableAll();
+
 		let place = new PlaceWeapon();
 		place.location = new GridLocation(0, 1);
 		place.type = 'PLUSFLAME';

@@ -4,6 +4,7 @@ import { WeaponType } from '../core/Types';
 import { GridLocation } from '../core/Core';
 import { BoardState } from '../core/Board';
 import { LevelData } from '../core/Level';
+import * as log from 'loglevel';
 import * as _ from 'lodash';
 
 export class UserAPI {
@@ -45,8 +46,8 @@ export class PlaceWeapon extends UserAction {
 			bs.commitTransaction();
 			return Promise.resolve();
 		} catch (e) {
-			console.error('Transaction fail');
-			console.error(e);
+			log.error('Transaction fail');
+			log.error(e);
 			bs.revertTransaction();
 			return Promise.reject(e);
 		}

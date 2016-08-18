@@ -1,7 +1,7 @@
 import * as Collections from 'typescript-collections';
 import { EnemyType, WeaponType } from './Types';
 import { Enemy, BasicEnemy } from './Enemy';
-import { Weapon, PlusFlame, XFlame } from './Weapon';
+import { Weapon, PlusFlame, XFlame, SmallBomb, LargeBomb, Freeze } from './Weapon';
 import { GridLocation, GridObject } from './Core';
 import { LevelData } from './Level';
 import { Empty } from './Object';
@@ -167,6 +167,15 @@ export class Inventory {
 				break;
 			case 'XFLAME':
 				w = new XFlame(l);
+				break;
+			case 'SMALLBOMB':
+				w = new SmallBomb(l);
+				break;
+			case 'LARGEBOMB':
+				w = new LargeBomb(l);
+				break;
+			case 'FREEZE':
+				w = new Freeze(l);
 				break;
 			default:
 				throw new Error('Unkown Weapon Type');

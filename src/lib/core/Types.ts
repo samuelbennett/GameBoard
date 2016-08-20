@@ -34,19 +34,17 @@ export type ObjectStates =
 	| EnemyStates
 	| WeaponStates;
 
-export type SettableEnemyStates =
-	'DEFAULT'
-	| 'INVINCIBLE'
-	| 'FROZEN';
-
 export type EnemyStates =
 	'TO_BE_REMOVED'
-	| 'DEAD'
-	| SettableEnemyStates;
+	| 'DEAD';
 
 export type WeaponStates =
 	'DEFAULT'
 	| 'ACTIVATED';
+
+export type EnemyFlag =
+	'INVINCIBLE'
+	| 'FROZEN';
 
 export type AfterPlaceStages =
 	'FIRST'

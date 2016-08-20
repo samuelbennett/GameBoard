@@ -1,6 +1,7 @@
 import {expect, assert} from 'chai';
-import {ObjectStates, ObjectType} from '../lib/core/Types';
+import {ObjectStates, ObjectType, EnemyFlag} from '../lib/core/Types';
 import {Grid} from '../lib/core/Board';
+import {Enemy} from '../lib/core/Enemy';
 import {GridLocation, GridObject} from '../lib/core/Core';
 import * as _ from 'lodash';
 
@@ -28,3 +29,17 @@ export function assertLocationsAreOfType(grid: Grid, locs: Array<[number, number
 		expect(o.type, `Loc: x:${l.x} y:${l.y}`).equals(tuple[2]);
 	});
 }
+
+export function assertLocationsAreEnemyWithFlag(grid: Grid, flag: EnemyFlag, locs: Array<[number, number, boolean]>) {
+	_.each(locs, function(tuple: [number, number, boolean]){
+		let l = new GridLocation(tuple[0], tuple[1]);
+		let o = grid.getObject(l);
+		if (o instanceof Enemy) {
+			expect(o.getFlagSate(flag), `Loc: x:${l.x} y:${l.y}`).equals(tuple[2]);
+		} else {
+			expect(o).instanceOf(Enemy); //always fails
+		}
+
+	});
+}
+

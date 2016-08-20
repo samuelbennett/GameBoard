@@ -143,7 +143,21 @@ export class Freeze extends Weapon {
 
 	afterMyPlace(g: Grid): void {
 		this._state = 'ACTIVATED';
-		//TODO
+		_.each(g.objectsFlat, o => {
+			if (o instanceof Enemy){
+				o.setFlag('FROZEN', true);
+			}
+		})
+	}
+
+	afterPlace(w: Weapon, g: Grid, s: AfterPlaceStages): void {
+		if (s === 'FIRST' && w !== this) { //on placement of something else
+			_.each(g.objectsFlat, o => {
+				if (o instanceof Enemy && o.getFlagSate('FROZEN') === true){
+					o.setFlag('FROZEN', false);
+				}
+			})
+		}
 	}
 
 	clone(): Freeze {

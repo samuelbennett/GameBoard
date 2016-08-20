@@ -1,10 +1,13 @@
+import * as Collections from 'typescript-collections';
 import { GridLocation, GridObject } from './Core';
-import { EnemyType, SettableEnemyStates } from './Types';
+import { EnemyType, EnemyFlag } from './Types';
 import { Grid } from './Board';
 
 export abstract class Enemy extends GridObject {
 	protected _type: EnemyType;
 	protected _lives: number;
+	protected _flags: Collections.Dictionary<EnemyFlag, boolean> = new Collections.Dictionary<EnemyFlag, boolean>();;
+
 
 	constructor(startingLocation: GridLocation) {
 		super(startingLocation);
@@ -22,8 +25,15 @@ export abstract class Enemy extends GridObject {
 		return !this.isDead();
 	}
 
-	setState(s: SettableEnemyStates) {
-		this._state = s;
+	setFlag(f: EnemyFlag, b:boolean) {
+		this._flags.setValue(f, b);
+	}
+
+	getFlagSate(f: EnemyFlag) {
+		if(!this._flags.containsKey(f)){
+			return false;
+		}
+		return this._flags.getValue(f);
 	}
 
 	hit() {
@@ -32,18 +42,18 @@ export abstract class Enemy extends GridObject {
 			return;
 		}
 
-		if (this._state === 'INVINCIBLE') {
+		if (this.getFlagSate('INVINCIBLE')) {
 			return;
 		}
 
-		if (this._state === 'FROZEN') {
+		if (this.getFlagSate('FROZEN')) {
 			this._lives = 0;
-			return;
 		}
 
 		this._lives -= 1;
 
 		if (this._lives <= 0) {
+			this._lives = 0;
 			this._state = 'DEAD';
 		}
 	}
@@ -78,6 +88,27 @@ export class SaintEnemy extends Enemy {
 		super(startingLocation);
 		this._type = 'SAINT_ENEMY';
 		this._lives = 1;
+	}
+
+	setFlag(f: EnemyFlag, b:boolean) {
+		if(f === 'FROZEN'){
+			if(b){
+				this.shieldDown();
+			}
+			else{
+				this.shieldUp();
+			}
+
+		}
+		this._flags.setValue(f, b);
+	}
+
+	private shieldUp(){
+		//TODO
+	}
+
+	private shieldDown(){
+		//TODO
 	}
 
 	clone(): SaintEnemy {

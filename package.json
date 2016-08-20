@@ -10,10 +10,10 @@
     "umd": "node browserify-umd.js",
     "minify": "node minify-umd.js",
     "build": "npm run lint && npm run tsc && npm run umd && npm run minify",
-    "test": "mocha ./dist/test/**/*.js",
+    "//test": "mocha ./dist/test/**/*.js",
     "test-break": "mocha --debug-brk ./dist/test/**/*.js",
-    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- ./dist/test/**/*.js && remap-istanbul -i coverage/coverage.json -o coverage-final -t html",
-    "all": "npm run clean && npm run build && npm run test && npm run cover",
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha -- ./dist/test/**/*.js && remap-istanbul -i coverage/coverage.json -o coverage-final -t html && remap-istanbul -i coverage/coverage.json -o coverage-final/lcov.info -t lcovonly",
+    "all": "npm run clean && npm run build && npm run test",
     "sloc": "sloc src/ && sloc src/ --details --format cli-table --keys total,source,comment"
   },
   "author": "",
